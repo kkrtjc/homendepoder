@@ -167,11 +167,12 @@
         /* PIX RESULT MODAL */
         #pixResultOverlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(8, 14, 22, 0.95);
-            backdrop-filter: blur(12px);
+            background: rgba(8, 14, 22, 0.98);
+            backdrop-filter: blur(20px);
             display: flex; align-items: center; justify-content: center;
             z-index: 10000; opacity: 0; pointer-events: none;
             transition: var(--transition);
+            overflow: hidden; /* Trava scroll interno do overlay */
         }
         #pixResultOverlay.active { opacity: 1; pointer-events: auto; }
 
@@ -194,15 +195,19 @@
         }
         .pix-qr-container img { width: 100%; height: auto; display: block; }
         
+        .pix-payee-name {
+            font-size: 0.75rem;
+            color: var(--gold);
+            font-weight: 700;
+            margin-top: -15px;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            opacity: 0.9;
+        }
+
         .pix-copy-box {
-            background: rgba(255,255,255,0.05);
-            border: 1px dashed rgba(201,168,76,0.5);
-            padding: 15px; border-radius: 12px;
-            margin: 20px 0; font-size: 0.8rem;
-            color: rgba(255,255,255,0.7);
-            word-break: break-all; min-height: 50px;
-            max-height: 80px; overflow-y: auto;
-            font-family: monospace; line-height: 1.4;
+            display: none; /* Oculta o código bruto conforme pedido */
         }
 
         .btn-copy {
@@ -2303,8 +2308,9 @@
             <img id="pixQRCodeImg" src="" alt="QR Code PIX">
         </div>
 
-        <p class="pix-result-desc" style="font-size: 0.85rem">Ou utilize o código Copia e Cola:</p>
-        <div class="pix-copy-box" id="pixCopyText">...carregando código...</div>
+        <div class="pix-payee-name">João Paulo Santos Camargo</div>
+
+        <div class="pix-copy-box" id="pixCopyText"></div>
 
         <button class="btn-copy" id="btnCopyPix" onclick="copyPixCode()">
             <i class="fa-solid fa-copy"></i>
