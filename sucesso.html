@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagamento Confirmado! — O Código da Voz</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '910522148156865');
+    fbq('track', 'PageView');
+    fbq('track', 'Purchase', { value: 49.90, currency: 'BRL' });
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=910522148156865&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #080E16; color: #fff; display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 24px; }
+        .card { background: #0f1b29; border: 1px solid rgba(201,168,76,0.25); border-radius: 24px; padding: 50px 40px; max-width: 480px; width: 100%; text-align: center; box-shadow: 0 30px 60px rgba(0,0,0,0.5); }
+        .icon { font-size: 4rem; margin-bottom: 20px; }
+        h1 { font-family: 'Playfair Display', serif; font-size: 2rem; color: #C9A84C; margin-bottom: 12px; }
+        p { color: rgba(255,255,255,0.6); font-size: 0.95rem; line-height: 1.65; }
+        .divider { height: 1px; background: rgba(255,255,255,0.07); margin: 24px 0; }
+        .steps { text-align: left; display: flex; flex-direction: column; gap: 14px; margin: 20px 0; }
+        .step { display: flex; align-items: flex-start; gap: 14px; }
+        .step-num { width: 28px; height: 28px; background: linear-gradient(135deg, #C9A84C, #8B6914); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.8rem; color: #0D1B2A; flex-shrink: 0; margin-top: 1px; }
+        .step-text { font-size: 0.88rem; color: rgba(255,255,255,0.7); line-height: 1.5; }
+        .step-text strong { color: #fff; }
+        .btn-download { display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 30px; background: linear-gradient(135deg, #C9A84C, #8B6914); color: #0D1B2A; font-weight: 800; padding: 18px 30px; border-radius: 12px; text-decoration: none; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 6px 24px rgba(201,168,76,0.3); transition: transform 0.2s; }
+        .btn-download:hover { transform: scale(1.02); opacity: 0.9; }
+        .note { margin-top: 16px; font-size: 0.75rem; color: rgba(255,255,255,0.25); }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="icon">✅</div>
+        <h1>Pagamento Confirmado!</h1>
+        <p>Seu acesso a <strong style="color:#fff">O Código da Voz</strong> foi liberado. Baixe seu e-book agora:</p>
+
+        <div class="divider"></div>
+
+        <div class="steps">
+            <div class="step">
+                <div class="step-num">1</div>
+                <div class="step-text"><strong>Clique no botão abaixo</strong> para baixar o e-book original.</div>
+            </div>
+            <div class="step">
+                <div class="step-num">2</div>
+                <div class="step-text"><strong>Salve o arquivo</strong> em seu celular ou computador.</div>
+            </div>
+            <div class="step">
+                <div class="step-num">3</div>
+                <div class="step-text"><strong>Pronto para ouvir sua nova voz?</strong> Comece pelo módulo de respiração.</div>
+            </div>
+        </div>
+
+        <a href="/download-ebook" class="btn-download">
+            ⬇️ &nbsp;Baixar O Código da Voz
+        </a>
+
+        <p class="note">Em caso de dúvidas, contate o suporte.</p>
+    </div>
+</body>
+</html>
