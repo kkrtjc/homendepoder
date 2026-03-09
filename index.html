@@ -164,6 +164,66 @@
             opacity: 0.5;
         }
 
+        /* PIX RESULT MODAL */
+        #pixResultOverlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(8, 14, 22, 0.95);
+            backdrop-filter: blur(12px);
+            display: flex; align-items: center; justify-content: center;
+            z-index: 10000; opacity: 0; pointer-events: none;
+            transition: var(--transition);
+        }
+        #pixResultOverlay.active { opacity: 1; pointer-events: auto; }
+
+        .pix-result-card {
+            background: #0f1b29;
+            width: 100%; max-width: 400px;
+            margin: 20px; border-radius: 24px;
+            padding: 40px 30px; border: 1px solid rgba(201,168,76,0.3);
+            text-align: center; position: relative;
+            transform: translateY(20px); transition: var(--transition);
+            box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+        }
+        #pixResultOverlay.active .pix-result-card { transform: translateY(0); }
+
+        .pix-qr-container {
+            background: #fff; padding: 15px; border-radius: 16px;
+            margin: 24px auto; width: 200px; height: 200px;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 10px 30px rgba(201,168,76,0.2);
+        }
+        .pix-qr-container img { width: 100%; height: auto; display: block; }
+        
+        .pix-copy-box {
+            background: rgba(255,255,255,0.05);
+            border: 1px dashed rgba(201,168,76,0.5);
+            padding: 15px; border-radius: 12px;
+            margin: 20px 0; font-size: 0.8rem;
+            color: rgba(255,255,255,0.7);
+            word-break: break-all; min-height: 50px;
+            max-height: 80px; overflow-y: auto;
+            font-family: monospace; line-height: 1.4;
+        }
+
+        .btn-copy {
+            width: 100%; background: linear-gradient(135deg, #C9A84C, #8B6914);
+            color: #0D1B2A; border: none; padding: 16px; border-radius: 12px;
+            font-weight: 800; font-size: 0.9rem; cursor: pointer;
+            transition: var(--transition); text-transform: uppercase;
+            letter-spacing: 0.5px; display: flex; align-items: center; justify-content: center; gap: 10px;
+        }
+        .btn-copy:hover { transform: scale(1.02); opacity: 0.9; }
+        .btn-copy.copied { background: var(--accent-green); }
+
+        .pix-result-title { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 1.6rem; margin-bottom: 8px; }
+        .pix-result-desc { font-size: 0.9rem; color: rgba(255,255,255,0.6); line-height: 1.5; }
+        
+        .pix-close {
+            position: absolute; top: 15px; right: 15px; background: rgba(255,255,255,0.1);
+            border: none; color: #fff; width: 32px; height: 32px; border-radius: 50%;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+        }
+
         .hero h1 {
             font-family: 'Playfair Display', serif;
             font-size: clamp(2.5rem, 6vw, 4.2rem);
@@ -2232,6 +2292,31 @@
     </div>
 </div>
 
+<!-- PIX RESULT MODAL -->
+<div id="pixResultOverlay" onclick="handlePixOverlayClick(event)">
+    <div class="pix-result-card">
+        <button class="pix-close" onclick="closePixModal()"><i class="fa-solid fa-xmark"></i></button>
+        <h2 class="pix-result-title">Escaneie o QR Code</h2>
+        <p class="pix-result-desc">Aproxime a câmera do seu aplicativo de banco para pagar via PIX.</p>
+        
+        <div class="pix-qr-container">
+            <img id="pixQRCodeImg" src="" alt="QR Code PIX">
+        </div>
+
+        <p class="pix-result-desc" style="font-size: 0.85rem">Ou utilize o código Copia e Cola:</p>
+        <div class="pix-copy-box" id="pixCopyText">...carregando código...</div>
+
+        <button class="btn-copy" id="btnCopyPix" onclick="copyPixCode()">
+            <i class="fa-solid fa-copy"></i>
+            <span id="copyBtnText">Copiar Código PIX</span>
+        </button>
+
+        <div class="ck-micro-trust" style="margin-top: 25px; justify-content: center;">
+            <span style="font-size: 0.75rem;"><i class="fa-solid fa-lock"></i> Pagamento processado pelo Mercado Pago</span>
+        </div>
+    </div>
+</div>
+
 <script>
     // FAQ Accordion
     document.querySelectorAll('.faq-question').forEach(btn => {
@@ -2309,6 +2394,40 @@
         if (el) el.textContent = `${m}:${s}`;
     }
 
+    function openPixModal(qrCodeBase64, qrCodeText) {
+        document.getElementById('pixQRCodeImg').src = `data:image/png;base64,${qrCodeBase64}`;
+        document.getElementById('pixCopyText').textContent = qrCodeText;
+        document.getElementById('pixResultOverlay').classList.add('active');
+        if (window.forceLockScroll) window.forceLockScroll();
+    }
+
+    function closePixModal() {
+        document.getElementById('pixResultOverlay').classList.remove('active');
+        if (window.forceUnlockScroll) window.forceUnlockScroll();
+    }
+
+    function handlePixOverlayClick(e) {
+        if (e.target === document.getElementById('pixResultOverlay')) closePixModal();
+    }
+
+    async function copyPixCode() {
+        const text = document.getElementById('pixCopyText').textContent;
+        const btn = document.getElementById('btnCopyPix');
+        const label = document.getElementById('copyBtnText');
+        
+        try {
+            await navigator.clipboard.writeText(text);
+            btn.classList.add('copied');
+            label.textContent = 'Código Copiado!';
+            setTimeout(() => {
+                btn.classList.remove('copied');
+                label.textContent = 'Copiar Código PIX';
+            }, 2000);
+        } catch (err) {
+            alert('Erro ao copiar. Selecione o texto manualmente.');
+        }
+    }
+
     function formatCardNumber(e) {
         let v = e.target.value.replace(/\D/g, '').substring(0, 16);
         e.target.value = v.replace(/(\d{4})/g, '$1 ').trim();
@@ -2341,9 +2460,13 @@
         btn.classList.add('processing');
         label.textContent = 'Processando...';
 
-        // Call backend to create Mercado Pago preference
+        // Call backend to process payment
         const cpf = document.getElementById('ck-cpf')?.value.replace(/\D/g, '');
-        fetch('/api/create-preference', {
+        
+        // Se for PIX, usamos o novo fluxo nativo. Se for Cartão, o Checkout Pro (redirecionamento).
+        const endpoint = currentMethod === 'pix' ? '/api/create-pix' : '/api/create-preference';
+
+        fetch(endpoint, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -2355,10 +2478,17 @@
         })
         .then(r => r.json())
         .then(data => {
-            if (data.init_point) {
+            btn.disabled = false;
+            btn.classList.remove('processing');
+            label.textContent = currentMethod === 'pix' ? 'Gerar PIX e Finalizar' : 'Pagar com Cartão';
+
+            if (currentMethod === 'pix' && data.qr_code) {
+                closeCheckout(); // Fecha o modal de dados
+                openPixModal(data.qr_code_base64, data.qr_code); // Abre o modal do QR Code
+            } else if (data.init_point) {
                 window.location.href = data.init_point;
             } else {
-                throw new Error('Sem link de pagamento');
+                throw new Error('Erro na resposta do servidor');
             }
         })
         .catch(() => {
