@@ -18,7 +18,19 @@
     'https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', '910522148156865');
     fbq('track', 'PageView');
-    fbq('track', 'Purchase', { value: 49.90, currency: 'BRL' });
+
+    // Fetch dynamic price for Purchase event
+    fetch('/api/config')
+        .then(r => r.json())
+        .then(data => {
+            fbq('track', 'Purchase', { 
+                value: data.price || 49.90, 
+                currency: 'BRL' 
+            });
+        })
+        .catch(() => {
+            fbq('track', 'Purchase', { value: 49.90, currency: 'BRL' });
+        });
     </script>
     <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=910522148156865&ev=PageView&noscript=1"

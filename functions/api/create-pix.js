@@ -12,6 +12,8 @@ export async function onRequestPost(context) {
     }
 
     const mpAccessToken = env.MP_ACCESS_TOKEN;
+    const productPrice = parseFloat(env.PRODUCT_PRICE) || 49.90;
+
     if (!mpAccessToken) {
       return new Response(JSON.stringify({ error: "Configuração do Mercado Pago ausente (Token)." }), {
         status: 500,
@@ -21,7 +23,7 @@ export async function onRequestPost(context) {
 
     // Prepare Payment Data for Native PIX
     const paymentData = {
-      transaction_amount: 49.90,
+      transaction_amount: productPrice,
       description: "O Código da Voz — E-book Completo",
       payment_method_id: "pix",
       payer: {

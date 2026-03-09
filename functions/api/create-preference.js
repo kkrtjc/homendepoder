@@ -16,6 +16,8 @@ export async function onRequest(context) {
     }
 
     const mpAccessToken = env.MP_ACCESS_TOKEN;
+    const productPrice = parseFloat(env.PRODUCT_PRICE) || 49.90;
+
     if (!mpAccessToken) {
       return new Response(JSON.stringify({ error: "Configuração do Mercado Pago ausente (Token)." }), {
         status: 500,
@@ -31,7 +33,7 @@ export async function onRequest(context) {
           title: "O Código da Voz — E-book Completo",
           description: "Método completo de oratória, voz grave e presença masculina. 6 módulos + exercícios práticos.",
           quantity: 1,
-          unit_price: 49.9,
+          unit_price: productPrice,
           currency_id: "BRL",
           category_id: "education",
         },

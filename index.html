@@ -2346,8 +2346,36 @@
     }
 
     // ===================== CHECKOUT LOGIC =====================
-
+    
+    let currentPrice = 49.90; // Fallback
     let currentMethod = 'pix';
+    
+    async function initDynamicPrice() {
+        try {
+            const resp = await fetch('/api/config');
+            const data = await resp.json();
+            if (data.price) {
+                currentPrice = data.price;
+                updatePriceUI();
+            }
+        } catch (e) {
+            console.error('Erro ao buscar preço:', e);
+        }
+    }
+
+    function updatePriceUI() {
+        const oldPrice = 97.00;
+        const discount = oldPrice - currentPrice;
+        
+        const currentEl = document.querySelector('.ck-price-tag .current');
+        if (currentEl) currentEl.textContent = `R$ ${currentPrice.toFixed(2).replace('.', ',')}`;
+        
+        const badgeEl = document.querySelector('.ck-save-badge');
+        if (badgeEl) badgeEl.textContent = `ECONOMIZE R$ ${Math.floor(discount)}`;
+    }
+
+    initDynamicPrice();
+
     let timerInterval = null;
     let timerSeconds = 900; // 15 min
 
@@ -2358,7 +2386,10 @@
 
         // Pixel: InitiateCheckout
         if (typeof fbq === 'function') {
-            fbq('track', 'InitiateCheckout');
+            fbq('track', 'InitiateCheckout', {
+                value: currentPrice,
+                currency: 'BRL'
+            });
         }
     }
 
@@ -2456,7 +2487,10 @@
 
         // Pixel: AddPaymentInfo
         if (typeof fbq === 'function') {
-            fbq('track', 'AddPaymentInfo');
+            fbq('track', 'AddPaymentInfo', {
+                value: currentPrice,
+                currency: 'BRL'
+            });
         }
 
         // Show loading state
