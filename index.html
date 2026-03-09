@@ -195,6 +195,34 @@
         }
         .pix-qr-container img { width: 100%; height: auto; display: block; }
         
+        .pix-urgency-box {
+            background: rgba(201, 168, 76, 0.08);
+            border: 1px solid rgba(201, 168, 76, 0.2);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .pix-timer {
+            display: inline-block;
+            font-size: 1.4rem;
+            color: var(--gold);
+            font-weight: 900;
+            font-variant-numeric: tabular-nums;
+            margin-bottom: 8px;
+            text-shadow: 0 0 10px rgba(201,168,76,0.2);
+            letter-spacing: 1px;
+        }
+        .pix-urgency-box p {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.4;
+        }
+        .pix-urgency-box p strong {
+            color: var(--gold);
+            font-size: 0.85rem;
+        }
+
         .pix-payee-name {
             font-size: 0.75rem;
             color: var(--gold);
@@ -2310,6 +2338,11 @@
 
         <div class="pix-payee-name">João Paulo Santos Camargo</div>
 
+        <div class="pix-urgency-box">
+            <span class="pix-timer"><i class="fa-solid fa-clock"></i> <span id="pixTimerDisplay">15:00</span></span>
+            <p><strong>⚠️ VAGA RESERVADA</strong><br>O sistema pode liberar sua vaga após o tempo expirar. Finalize agora.</p>
+        </div>
+
         <div class="pix-copy-box" id="pixCopyText"></div>
 
         <button class="btn-copy" id="btnCopyPix" onclick="copyPixCode()">
@@ -2431,16 +2464,42 @@
         if (el) el.textContent = `${m}:${s}`;
     }
 
+    let pixTimerInterval = null;
+    let pixTimerSeconds = 900; // 15 min
+
+    function startPixTimer() {
+        clearInterval(pixTimerInterval);
+        pixTimerSeconds = 900;
+        updatePixTimerDisplay();
+        pixTimerInterval = setInterval(() => {
+            pixTimerSeconds--;
+            if (pixTimerSeconds <= 0) { 
+                clearInterval(pixTimerInterval); 
+                pixTimerSeconds = 0; 
+            }
+            updatePixTimerDisplay();
+        }, 1000);
+    }
+
+    function updatePixTimerDisplay() {
+        const m = String(Math.floor(pixTimerSeconds / 60)).padStart(2, '0');
+        const s = String(pixTimerSeconds % 60).padStart(2, '0');
+        const el = document.getElementById('pixTimerDisplay');
+        if (el) el.textContent = `${m}:${s}`;
+    }
+
     function openPixModal(qrCodeBase64, qrCodeText) {
         document.getElementById('pixQRCodeImg').src = `data:image/png;base64,${qrCodeBase64}`;
         document.getElementById('pixCopyText').textContent = qrCodeText;
         document.getElementById('pixResultOverlay').classList.add('active');
         if (window.forceLockScroll) window.forceLockScroll();
+        startPixTimer();
     }
 
     function closePixModal() {
         document.getElementById('pixResultOverlay').classList.remove('active');
         if (window.forceUnlockScroll) window.forceUnlockScroll();
+        clearInterval(pixTimerInterval);
     }
 
     function handlePixOverlayClick(e) {
