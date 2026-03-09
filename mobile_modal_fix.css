@@ -1,0 +1,101 @@
+/* MOBILE CHECKOUT & RESPONSIVENESS FIX */
+
+/* Global Mobile Padding Fix - Preventing text from touching the edges */
+@media (max-width: 768px) {
+    .container, .container-wide {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    section {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+
+    /* Fixing cards that might be too cramped */
+    .module-card, .testimonial-card, .benefit-card {
+        padding: 20px !important;
+        margin-left: 5px !important;
+        margin-right: 5px !important;
+    }
+
+    .pain-item {
+        padding: 15px !important;
+        gap: 12px !important;
+    }
+
+    .hero-content {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+
+    footer {
+        padding-bottom: 120px !important; /* Space for sticky button */
+    }
+}
+
+/* Modal Stability - Background Locking */
+html.modal-open, 
+body.modal-open {
+    overflow: hidden !important;
+    position: fixed !important;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* Checkout Modal Overlay Stability */
+.ck-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100dvh; /* Dynamic viewport height */
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.9) !important;
+    backdrop-filter: blur(8px);
+    z-index: 20000;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.ck-overlay.open {
+    display: flex !important;
+}
+
+/* Modal Content Stability */
+.ck-modal {
+    width: 100%;
+    max-width: 500px;
+    background: #0D1B2A !important;
+    border: 1px solid rgba(201, 168, 76, 0.3) !important;
+    border-radius: 20px;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    transform-origin: center;
+}
+
+/* Prevent horizontal scroll during input focus */
+.ck-input:focus {
+    font-size: 16px !important; /* Prevents auto-zoom on iOS */
+}
+
+/* Mobile Adjustments for Modal */
+@media (max-width: 500px) {
+    .ck-modal {
+        margin: 0 !important;
+        border-radius: 15px !important;
+        max-height: 92vh !important;
+        overflow-y: auto !important;
+    }
+    
+    .ck-overlay {
+        padding: 5px !important;
+        align-items: flex-start !important; /* Better for keyboard */
+    }
+}

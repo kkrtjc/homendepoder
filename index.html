@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="mobile_modal_fix.css">
 
     <style>
         /* ===== RESET & ROOT ===== */
@@ -1960,13 +1961,13 @@
 
     function openCheckout() {
         document.getElementById('ckOverlay').classList.add('open');
-        document.body.style.overflow = 'hidden';
+        if (window.forceLockScroll) window.forceLockScroll();
         startCheckoutTimer();
     }
 
     function closeCheckout() {
         document.getElementById('ckOverlay').classList.remove('open');
-        document.body.style.overflow = '';
+        if (window.forceUnlockScroll) window.forceUnlockScroll();
         clearInterval(timerInterval);
     }
 
@@ -2081,5 +2082,6 @@
         });
     });
 </script>
+<script src="modal_body_fix.js"></script>
 </body>
 </html>
