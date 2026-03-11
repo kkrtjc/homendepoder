@@ -165,6 +165,18 @@ app.post('/api/create-preference', async (req, res) => {
     }
 });
 
+// CHECK PAYMENT STATUS
+app.get('/api/check-payment/:id', (req, res) => {
+    const paymentId = req.params.id;
+    const abandons = getAbandons();
+    const lead = abandons.find(a => a.pixId == paymentId);
+    
+    if (lead && lead.paid) {
+        return res.json({ paid: true });
+    }
+    res.json({ paid: false });
+});
+
 // DOWNLOAD DO EBOOK
 app.get('/download-ebook', (req, res) => {
     const ebookPath = path.join(__dirname, 'ebook_oratoria_masculina.html');

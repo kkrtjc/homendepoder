@@ -2489,18 +2489,20 @@
         if (el) el.textContent = `${m}:${s}`;
     }
 
-    function openPixModal(qrCodeBase64, qrCodeText) {
+    function openPixModal(qrCodeBase64, qrCodeText, paymentId) {
         document.getElementById('pixQRCodeImg').src = `data:image/png;base64,${qrCodeBase64}`;
         document.getElementById('pixCopyText').textContent = qrCodeText;
         document.getElementById('pixResultOverlay').classList.add('active');
         if (window.forceLockScroll) window.forceLockScroll();
         startPixTimer();
+        startPaymentPolling(paymentId);
     }
 
     function closePixModal() {
         document.getElementById('pixResultOverlay').classList.remove('active');
         if (window.forceUnlockScroll) window.forceUnlockScroll();
         clearInterval(pixTimerInterval);
+        clearInterval(paymentPollInterval);
     }
 
     function handlePixOverlayClick(e) {
@@ -2585,7 +2587,7 @@
             if (currentMethod === 'pix' && data.qr_code) {
                 captureAbandonedLead(true, data.id); // Captura agora com flag de PIX
                 closeCheckout(); // Fecha o modal de dados
-                openPixModal(data.qr_code_base64, data.qr_code); // Abre o modal do QR Code
+                openPixModal(data.qr_code_base64, data.qr_code, data.id); // Abre o modal do QR Code com ID para polling
             } else if (data.init_point) {
                 captureAbandonedLead(); // Captura antes de redirecionar para cartão
                 window.location.href = data.init_point;
@@ -2599,6 +2601,21 @@
             label.textContent = currentMethod === 'pix' ? 'Gerar PIX e Finalizar' : 'Pagar com Cartão';
             alert('Erro ao processar. Tente novamente.');
         });
+    }
+
+    let paymentPollInterval = null;
+    function startPaymentPolling(paymentId) {
+        clearInterval(paymentPollInterval);
+        paymentPollInterval = setInterval(async () => {
+            try {
+                const resp = await fetch(`/api/check-payment/${paymentId}`);
+                const data = await resp.json();
+                if (data.paid) {
+                    clearInterval(paymentPollInterval);
+                    window.location.href = '/sucesso.html';
+                }
+            } catch (e) { console.error('Erro polling:', e); }
+        }, 3000); // Checa a cada 3 segundos
     }
 
     // ABANDONMENT TRACKING

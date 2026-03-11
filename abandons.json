@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "name": "Teste Polling",
+    "email": "test@polling.com",
+    "phone": "11999999999",
+    "pixGenerated": true,
+    "pixId": "999888777",
+    "paid": true,
+    "updatedAt": "2026-03-11T01:56:20.150Z",
+    "createdAt": "2026-03-11T01:56:20.152Z"
+  }
+]
