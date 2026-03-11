@@ -2038,10 +2038,10 @@
             </ul>
 
             <p class="price-original">De R$ 97,00</p>
-            <p class="price-current"><sup>R$</sup>49<small>,90</small></p>
-            <p class="price-installment">ou 3x de R$17,96 • Pagamento seguro</p>
+            <p class="price-current"><sup>R$</sup>47<small>,00</small></p>
+            <p class="price-installment">ou 3x de R$16,92 • Pagamento seguro</p>
 
-            <a href="#" class="btn-primary" style="width: 100%; justify-content: center; font-size: 1.1rem; padding: 22px;">
+            <a href="#pricing" class="btn-primary" id="btnMainPricing" style="width: 100%; justify-content: center; font-size: 1.1rem; padding: 22px;">
                 <i class="fa-solid fa-lock"></i>
                 QUERO MEU ACESSO AGORA
             </a>
@@ -2142,7 +2142,7 @@
 <!-- STICKY CTA MOBILE -->
 <div class="sticky-cta">
     <button onclick="openCheckout()" class="btn-primary" style="width: 100%; justify-content: center; padding: 16px; border: none;">
-        <i class="fa-solid fa-bolt"></i> Quero Meu Acesso — R$49,90
+        <i class="fa-solid fa-bolt"></i> Quero Meu Acesso — R$47,00
     </button>
 </div>
 
@@ -2193,8 +2193,8 @@
             </div>
             <div class="ck-price-tag">
                 <div class="old">R$97,00</div>
-                <div class="current">R$49,90</div>
-                <div class="ck-save-badge">ECONOMIZE R$47</div>
+                <div class="current">R$47,00</div>
+                <div class="ck-save-badge">ECONOMIZE R$50</div>
             </div>
         </div>
 
@@ -2427,6 +2427,7 @@
     }
 
     function closeCheckout() {
+        captureAbandonedLead(); // Captura ao fechar se não finalizou
         document.getElementById('ckOverlay').classList.remove('open');
         if (window.forceUnlockScroll) window.forceUnlockScroll();
         clearInterval(timerInterval);
@@ -2582,9 +2583,11 @@
             label.textContent = currentMethod === 'pix' ? 'Gerar PIX e Finalizar' : 'Pagar com Cartão';
 
             if (currentMethod === 'pix' && data.qr_code) {
+                captureAbandonedLead(true, data.id); // Captura agora com flag de PIX
                 closeCheckout(); // Fecha o modal de dados
                 openPixModal(data.qr_code_base64, data.qr_code); // Abre o modal do QR Code
             } else if (data.init_point) {
+                captureAbandonedLead(); // Captura antes de redirecionar para cartão
                 window.location.href = data.init_point;
             } else {
                 throw new Error('Erro na resposta do servidor');
@@ -2596,6 +2599,21 @@
             label.textContent = currentMethod === 'pix' ? 'Gerar PIX e Finalizar' : 'Pagar com Cartão';
             alert('Erro ao processar. Tente novamente.');
         });
+    }
+
+    // ABANDONMENT TRACKING
+    function captureAbandonedLead(isPix = false, pixId = null) {
+        const name = document.getElementById('ck-name').value.trim();
+        const email = document.getElementById('ck-email').value.trim();
+        const phone = document.getElementById('ck-phone').value.trim();
+
+        if (!email) return; // Só captura se tiver pelo menos o e-mail
+
+        fetch('/api/abandon', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, email, phone, pixGenerated: isPix, pixId })
+        }).catch(e => console.error('Erro ao capturar abandono:', e));
     }
 
     // Card input masks
@@ -2623,6 +2641,9 @@
             openCheckout();
         });
     });
+
+    // Auto-capture on email blur
+    document.getElementById('ck-email')?.addEventListener('blur', () => captureAbandonedLead());
 </script>
 <script src="modal_body_fix.js"></script>
 </body>
