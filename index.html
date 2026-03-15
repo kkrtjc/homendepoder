@@ -3,6 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '910522148156865');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=910522148156865&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+
     <title>Os Primeiros Dias | Guia Completo para Mães de Recém-Nascidos</title>
     <meta name="description" content="O guia prático que toda mãe precisa nos primeiros dias com seu recém-nascido: amamentação correta, banho seguro, sono saudável e os sinais de alerta que você precisa reconhecer.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -83,10 +102,40 @@
         .ebook-cover { position: relative; }
         .ebook-cover img { width: 100%; max-width: 300px; border-radius: 12px; box-shadow: 0 30px 80px rgba(200,118,138,0.3), 0 10px 30px rgba(0,0,0,0.6); display: block; margin: 0 auto; }
         .ebook-badge { position: absolute; top: -12px; right: -12px; background: var(--rose); color: #fff; font-size: 0.6rem; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; padding: 8px 14px; border-radius: 100px; box-shadow: 0 4px 15px rgba(200,118,138,0.4); }
-        .benefits-list { list-style: none; }
-        .benefits-list li { display: flex; align-items: flex-start; gap: 14px; padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.92rem; color: rgba(255,255,255,0.85); }
-        .benefits-list li:last-child { border-bottom: none; }
-        .benefits-list li i { color: var(--green); width: 18px; flex-shrink: 0; margin-top: 3px; }
+        .benefits-list { list-style: none; margin-top: 20px; }
+        .benefits-list li { 
+            display: flex; 
+            align-items: center; 
+            gap: 16px; 
+            padding: 16px; 
+            background: rgba(255, 255, 255, 0.03); 
+            border: 1px solid rgba(255, 255, 255, 0.05); 
+            border-radius: 12px; 
+            margin-bottom: 12px; 
+            font-size: 0.95rem; 
+            color: rgba(255, 255, 255, 0.9); 
+            transition: var(--transition);
+        }
+        .benefits-list li:hover { 
+            background: rgba(200, 118, 138, 0.08); 
+            border-color: rgba(200, 118, 138, 0.2); 
+            transform: translateX(5px);
+        }
+        .benefits-list li i { 
+            color: var(--rose-light); 
+            font-size: 1.1rem; 
+            width: 24px; 
+            height: 24px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            background: rgba(200, 118, 138, 0.15); 
+            border-radius: 50%;
+            flex-shrink: 0;
+            box-shadow: 0 0 15px rgba(200, 118, 138, 0.2);
+        }
+        .benefits-list li strong { color: #fff; font-weight: 700; display: block; margin-bottom: 2px; }
+        .benefits-list li span { display: block; line-height: 1.4; color: rgba(255, 255, 255, 0.7); font-size: 0.88rem; }
 
         /* CHAPTERS — REAL FROM EBOOK */
         .chapters-section { background: #150609; }
@@ -149,10 +198,14 @@
         .checkout-header { text-align: center; margin-bottom: 20px; }
         .checkout-header h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--rose-light); margin-bottom: 4px; }
         .checkout-header p { font-size: 0.8rem; color: var(--text-muted); }
-        .checkout-product-row { display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.04); border-radius: 10px; padding: 12px; margin-bottom: 16px; }
-        .checkout-product-row img { width: 48px; height: 60px; object-fit: cover; border-radius: 6px; }
-        .checkout-product-row .product-name { font-size: 0.85rem; font-weight: 700; color: #fff; }
-        .checkout-product-row .product-price { font-size: 0.8rem; color: var(--rose-light); font-weight: 700; margin-top: 2px; }
+        .checkout-product-row { display: flex; align-items: flex-start; gap: 16px; background: rgba(255,255,255,0.04); border-radius: 12px; padding: 16px; margin-bottom: 16px; border: 1px solid rgba(255,255,255,0.05); }
+        .checkout-product-row img { width: 68px; height: 90px; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.4); flex-shrink: 0; }
+        .checkout-product-row .product-name { font-size: 0.9rem; font-weight: 700; color: #fff; line-height: 1.2; }
+        .checkout-product-row .product-price { font-size: 0.8rem; color: var(--rose-light); font-weight: 700; margin-top: 3px; }
+        .mini-benefits { list-style: none; margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.07); }
+        .mini-benefits li { font-size: 0.72rem; color: rgba(255,255,255,0.7); display: flex; align-items: center; gap: 6px; margin-bottom: 4px; }
+        .mini-benefits li i { color: var(--green); font-size: 0.65rem; }
+        .mini-benefits li strong { color: #fff; font-weight: 600; }
         /* Checkout trust row */
         .checkout-trust { display: flex; justify-content: center; gap: 12px; margin-bottom: 18px; flex-wrap: wrap; }
         .checkout-trust span { display: flex; align-items: center; gap: 4px; font-size: 0.68rem; color: var(--text-muted); }
@@ -187,6 +240,31 @@
         .btn-copy { width: 100%; background: linear-gradient(135deg, var(--rose), var(--rose-dark)); color: #fff; border: none; padding: 15px; border-radius: 12px; font-weight: 800; font-size: 0.88rem; cursor: pointer; transition: var(--transition); text-transform: uppercase; letter-spacing: 0.5px; display: flex; align-items: center; justify-content: center; gap: 8px; }
         .btn-copy:hover { transform: scale(1.02); }
         .btn-copy.copied { background: var(--green); }
+
+        /* REINFORCEMENT STYLES */
+        .checkout-reinforcement { background: rgba(74, 222, 128, 0.08); border: 1px dashed rgba(74, 222, 128, 0.3); border-radius: 12px; padding: 14px; margin-bottom: 18px; text-align: left; }
+        .checkout-reinforcement p { font-size: 0.82rem; color: #fff; line-height: 1.4; margin: 0; }
+        .checkout-reinforcement i { color: var(--green); margin-right: 8px; }
+
+        .guarantee-reinforcement { background: rgba(200, 118, 138, 0.05); border: 1px solid rgba(200, 118, 138, 0.2); border-radius: 12px; padding: 14px; margin-bottom: 18px; text-align: left; display: flex; gap: 12px; align-items: center; }
+        .guarantee-reinforcement i { font-size: 1.5rem; color: var(--rose-light); flex-shrink: 0; }
+        .guarantee-reinforcement p { font-size: 0.8rem; color: rgba(255,255,255,0.8); line-height: 1.4; margin: 0; }
+        .guarantee-reinforcement strong { color: #fff; }
+
+        .pix-rep-box { margin-top: 14px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.05); }
+        .pix-rep-box p { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; }
+
+        /* Modal Benefits */
+        .modal-benefits { background: rgba(255, 255, 255, 0.03); border-radius: 12px; padding: 14px; margin-bottom: 18px; border: 1px solid rgba(255, 126, 179, 0.1); }
+        .modal-benefits ul { list-style: none; padding: 0; margin: 0; }
+        .modal-benefits li { font-size: 0.82rem; color: rgba(255, 255, 255, 0.85); margin-bottom: 8px; display: flex; align-items: flex-start; gap: 8px; line-height: 1.3; }
+        .modal-benefits li:last-child { margin-bottom: 0; }
+        .modal-benefits i { color: #4CAF50; font-size: 0.75rem; margin-top: 2px; }
+        .modal-benefits strong { color: var(--rose-light); font-weight: 700; }
+
+        .checkout-logos { display: flex; justify-content: center; align-items: center; gap: 15px; margin-top: 18px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.05); }
+        .checkout-logos img { height: 22px; width: auto; opacity: 0.8; transition: var(--transition); filter: grayscale(0.2); }
+        .checkout-logos img:hover { opacity: 1; filter: grayscale(0); }
 
         @media (max-width: 768px) {
             .pain-list, .chapters-grid, .showcase-grid, .testimonials-grid { grid-template-columns: 1fr; }
@@ -281,13 +359,48 @@
                     Um guia direto ao ponto, escrito na linguagem que toda mãe entende. Sem termos médicos complicados. Apenas <strong style="color:#fff;">o que você precisa saber para agir com segurança agora</strong>.
                 </p>
                 <ul class="benefits-list">
-                    <li><i class="fa-solid fa-check"></i> Como garantir uma pega correta e amamentar sem dor</li>
-                    <li><i class="fa-solid fa-check"></i> Frequência de mamadas nos primeiros dias (8 a 12x/dia é normal)</li>
-                    <li><i class="fa-solid fa-check"></i> Temperatura ideal do banho e como testar com segurança</li>
-                    <li><i class="fa-solid fa-check"></i> Protocolo correto de higiene do coto umbilical</li>
-                    <li><i class="fa-solid fa-check"></i> Posição segura para dormir e ambiente ideal de sono</li>
-                    <li><i class="fa-solid fa-check"></i> Os sinais de alerta que exigem ida imediata à UPA</li>
-                    <li><i class="fa-solid fa-check"></i> O que fazer em cada situação de emergência neonatal</li>
+                    <li>
+                        <i class="fa-solid fa-droplet"></i>
+                        <div>
+                            <strong>Amamentação Sem Dor</strong>
+                            <span>Aprenda a pega correta para não machucar seus seios e evitar que seu bebê passe fome por falta de sucção.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-bath"></i>
+                        <div>
+                            <strong>Banho Sem Sustos</strong>
+                            <span>Saiba a temperatura exata para não queimar a pele sensível do seu bebê nem deixá-lo passar frio.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-shield-virus"></i>
+                        <div>
+                            <strong>Coto Umbilical Protegido</strong>
+                            <span>Siga o protocolo de higiene correto para evitar infecções e inflamações perigosas no seu recém-nascido.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-bed"></i>
+                        <div>
+                            <strong>Sono 100% Seguro</strong>
+                            <span>Conheça a posição que previne o risco de morte súbita, para você dormir tranquila sabendo que ele está bem.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-face-sad-cry"></i>
+                        <div>
+                            <strong>Identifique a Emergência</strong>
+                            <span>Não perca tempo com dúvidas. Saiba diferenciar um choro comum de um sinal de alerta grave agora mesmo.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-truck-medical"></i>
+                        <div>
+                            <strong>Socorro Imediato</strong>
+                            <span>Tenha clareza de quando correr para a UPA, protegendo a vida do seu pequeno em situações críticas.</span>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -431,7 +544,16 @@
         </div>
         <div class="checkout-product-row">
             <img src="capa_ebook.png" alt="Ebook">
-            <div><div class="product-name">Os Primeiros Dias</div><div class="product-price">R$ 49,90 — Acesso Imediato</div></div>
+            <div>
+                <div class="product-name">Os Primeiros Dias</div>
+                <div class="product-price">R$ 49,90 — Acesso Imediato</div>
+                <ul class="mini-benefits">
+                    <li><i class="fa-solid fa-check"></i> <strong>Amamentação sem dor</strong></li>
+                    <li><i class="fa-solid fa-check"></i> <strong>Sono Seguro</strong></li>
+                    <li><i class="fa-solid fa-check"></i> <strong>Sinais de Alerta</strong></li>
+                    <li><i class="fa-solid fa-check"></i> <strong>Banho sem sustos</strong></li>
+                </ul>
+            </div>
         </div>
         <div class="checkout-trust">
             <span><i class="fa-solid fa-lock"></i> Compra Segura</span>
@@ -442,6 +564,17 @@
             <div class="method-tab active" onclick="setMethod('pix')" id="tab-pix"><i class="fa-solid fa-qrcode"></i> PIX</div>
             <div class="method-tab" onclick="setMethod('card')" id="tab-card"><i class="fa-solid fa-credit-card"></i> CARTÃO</div>
         </div>
+
+        <div class="checkout-reinforcement">
+            <p><i class="fa-solid fa-bolt"></i> <strong>DOWNLOAD LIBERADO:</strong> O guia será liberado para baixar imediatamente após a confirmação do pagamento.</p>
+        </div>
+
+        <div class="guarantee-reinforcement">
+            <i class="fa-solid fa-shield-heart"></i>
+            <p><strong>GARANTIA BLINDADA:</strong> Se você mãe não gostar do conteúdo, devolvemos seu dinheiro em 7 dias. <strong>Sem risco, sem letra miúda.</strong></p>
+        </div>
+
+
         <div id="pix-form">
             <div class="form-group"><label>Nome Completo</label><input type="text" class="form-control" id="pix-name" placeholder="Seu nome"></div>
             <div class="form-group"><label>CPF</label><input type="text" class="form-control" id="pix-cpf" placeholder="000.000.000-00" maxlength="14"></div>
@@ -460,9 +593,6 @@
             <button class="btn-pay" id="btn-pay-card" onclick="handleCardPayment()"><i class="fa-solid fa-lock"></i> Pagar R$ 49,90</button>
         </div>
         <p class="secure-info"><i class="fa-solid fa-lock"></i> Dados criptografados e protegidos pelo Mercado Pago</p>
-        <div class="checkout-logos">
-            <span>VISA</span><span>MASTER</span><span>PIX</span><span>ELO</span>
-        </div>
     </div>
 </div>
 
@@ -471,11 +601,14 @@
     <div class="pix-result-card">
         <div class="pix-result-title">PIX Gerado! 🍼</div>
         <p class="pix-result-desc">Escaneie o QR Code ou copie o código para pagar. Após o pagamento, você recebe o acesso por e-mail.</p>
+        <div class="pix-qr-container"><img id="pix-qr-img" src="" alt="QR Code PIX"></div>
         <div class="pix-urgency-box">
             <span class="pix-timer" id="pix-countdown">15:00</span>
             <p>Seu pedido está <strong>reservado</strong>. O PIX expira em breve.</p>
+            <div class="pix-rep-box">
+                <p>Responsável Financeiro:<br><strong style="color:#fff; font-size:0.85rem;">JOAO PAULO SANTOS CAMARGO</strong></p>
+            </div>
         </div>
-        <div class="pix-qr-container"><img id="pix-qr-img" src="" alt="QR Code PIX"></div>
         <button class="btn-copy" id="btn-copy-pix" onclick="copyPix()"><i class="fa-solid fa-copy"></i> Copiar Código PIX</button>
         <p style="font-size:0.7rem; color:var(--text-muted); margin-top:12px;">Após o pagamento, você receberá o guia no e-mail informado.</p>
     </div>
@@ -486,7 +619,11 @@
     let currentPixCode = '';
     let countdownTimer;
 
-    function openCheckout() { document.getElementById('checkoutOverlay').classList.add('active'); document.body.style.overflow = 'hidden'; }
+    function openCheckout() { 
+        document.getElementById('checkoutOverlay').classList.add('active'); 
+        document.body.style.overflow = 'hidden';
+        fbq('track', 'InitiateCheckout');
+    }
     function closeCheckout() { document.getElementById('checkoutOverlay').classList.remove('active'); document.body.style.overflow = ''; }
 
     function setMethod(m) {
