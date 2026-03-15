@@ -10,7 +10,7 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // ===== CONFIG =====
-const PRODUCT_PRICE = 47.00;
+const PRODUCT_PRICE = 49.90;
 const ABANDONS_FILE = path.join(__dirname, 'abandons.json');
 
 // Ensure abandons file exists
@@ -43,7 +43,7 @@ function saveAbandons(data) {
 // ===== API ENDPOINTS =====
 
 app.get('/health', (req, res) => {
-    res.json({ status: 'O Código da Voz Server Online 🎙️' });
+    res.json({ status: 'Os Primeiros Dias — Server Online 👶' });
 });
 
 app.get('/api/config', (req, res) => {
@@ -90,7 +90,7 @@ app.post('/api/create-pix', async (req, res) => {
     try {
         const paymentData = {
             transaction_amount: PRODUCT_PRICE,
-            description: "O Código da Voz — E-book Completo",
+            description: "Os Primeiros Dias — Guia Completo para Mães",
             payment_method_id: "pix",
             payer: {
                 email: email,
@@ -143,7 +143,7 @@ app.post('/api/create-preference', async (req, res) => {
         const preference = new Preference(mpClient);
         const preferenceData = {
             items: [{
-                title: 'O Código da Voz — E-book Completo',
+                title: 'Os Primeiros Dias — Guia Completo para Mães',
                 quantity: 1,
                 unit_price: PRODUCT_PRICE,
                 currency_id: 'BRL',
@@ -179,11 +179,11 @@ app.get('/api/check-payment/:id', (req, res) => {
 
 // DOWNLOAD DO EBOOK
 app.get('/download-ebook', (req, res) => {
-    const ebookPath = path.join(__dirname, 'ebook_oratoria_masculina.html');
+    const ebookPath = path.join(__dirname, 'ebook dos bebe.html');
     if (!fs.existsSync(ebookPath)) {
         return res.status(404).send('Arquivo não encontrado.');
     }
-    res.setHeader('Content-Disposition', 'attachment; filename="O-Codigo-da-Voz-Ebook.html"');
+    res.setHeader('Content-Disposition', 'attachment; filename="Os-Primeiros-Dias-Ebook.html"');
     res.setHeader('Content-Type', 'text/html; charset=utf-8');
     res.sendFile(ebookPath);
 });
@@ -209,6 +209,6 @@ app.get('/sucesso.html', (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`\n🎙️  O Código da Voz — Server rodando em http://localhost:${PORT}`);
+    console.log(`\n👶  Os Primeiros Dias — Server rodando em http://localhost:${PORT}`);
     console.log(`💰  Preço configurado: R$ ${PRODUCT_PRICE}`);
 });
