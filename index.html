@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Os Primeiros Dias | Guia Completo para Mães de Recém-Nascidos</title>
-    <meta name="description" content="O guia que todo pediatra recomenda mas ninguém te entrega na maternidade. Aprenda a cuidar do seu bebê com segurança e confiança nos dias mais críticos da vida dele.">
+    <meta name="description" content="O guia prático que toda mãe precisa nos primeiros dias com seu recém-nascido: amamentação correta, banho seguro, sono saudável e os sinais de alerta que você precisa reconhecer.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -14,11 +14,12 @@
             --rose: #C8768A;
             --rose-light: #F2A7B8;
             --rose-dark: #8B3F52;
-            --rose-bg: #1A0C10;
             --dark: #0F0508;
-            --cream: #FFF5F0;
+            --dark-card: #1a0c10;
+            --navy: #150609;
             --text-muted: rgba(255,255,255,0.55);
-            --accent-green: #4ade80;
+            --green: #4ade80;
+            --amber: #f59e0b;
             --radius: 16px;
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -29,27 +30,21 @@
         .section-sm { padding: 50px 0; }
         .rose { color: var(--rose); }
         .center { text-align: center; }
+        .section-tag { display: inline-block; font-size: 0.62rem; font-weight: 800; text-transform: uppercase; letter-spacing: 3px; color: var(--rose-light); background: rgba(200,118,138,0.1); border: 1px solid rgba(200,118,138,0.25); padding: 6px 16px; border-radius: 100px; margin-bottom: 20px; }
 
-        /* ANNOUNCEMENT BAR */
-        .announcement-bar {
-            background: linear-gradient(90deg, var(--rose-dark), var(--rose), var(--rose-dark));
-            padding: 10px 20px; text-align: center; font-size: 0.8rem;
-            font-weight: 700; color: #fff; letter-spacing: 0.5px;
-        }
+        /* ANNOUNCEMENT */
+        .announcement-bar { background: linear-gradient(90deg, var(--rose-dark), var(--rose), var(--rose-dark)); padding: 10px 20px; text-align: center; font-size: 0.8rem; font-weight: 700; color: #fff; letter-spacing: 0.5px; }
 
         /* HERO */
         .hero { position: relative; min-height: 100vh; display: flex; align-items: center; overflow: hidden; }
         .hero-bg { position: absolute; inset: 0; z-index: 0; }
         .hero-img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; opacity: 0.28; }
-        .hero-gradient {
-            position: absolute; inset: 0;
-            background: linear-gradient(to bottom, rgba(15,5,8,0.5) 0%, rgba(15,5,8,0.3) 40%, rgba(15,5,8,0.95) 100%);
-        }
+        .hero-gradient { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(15,5,8,0.5) 0%, rgba(15,5,8,0.3) 40%, rgba(15,5,8,0.95) 100%); }
         .hero-glow { position: absolute; top: 20%; left: 50%; transform: translateX(-50%); width: 500px; height: 500px; background: radial-gradient(circle, rgba(200,118,138,0.12) 0%, transparent 70%); pointer-events: none; }
         .hero-content { position: relative; z-index: 1; padding: 120px 0 80px; width: 100%; }
         .hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--rose-light); margin-bottom: 24px; }
         .hero-eyebrow::before, .hero-eyebrow::after { content: ''; width: 30px; height: 1px; background: var(--rose); opacity: 0.5; }
-        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 5.5vw, 3.8rem); font-weight: 900; line-height: 1.1; margin-bottom: 24px; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5.5vw, 3.8rem); font-weight: 900; line-height: 1.1; margin-bottom: 24px; }
         .hero h1 .line-rose { color: var(--rose-light); display: block; }
         .hero h1 .line-red { color: #ff6b6b; font-style: italic; display: block; }
         .hero-sub { font-size: 1.1rem; color: rgba(255,255,255,0.75); line-height: 1.7; max-width: 600px; margin-bottom: 40px; }
@@ -59,20 +54,13 @@
         @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
 
         /* BUTTONS */
-        .btn-primary {
-            display: inline-flex; align-items: center; gap: 12px;
-            background: linear-gradient(135deg, var(--rose) 0%, var(--rose-dark) 100%);
-            color: #fff; font-size: 1rem; font-weight: 800; padding: 18px 36px;
-            border-radius: 12px; text-decoration: none; transition: var(--transition);
-            border: none; cursor: pointer; box-shadow: 0 8px 30px rgba(200,118,138,0.4);
-            text-transform: uppercase; letter-spacing: 0.5px; position: relative; overflow: hidden;
-        }
+        .btn-primary { display: inline-flex; align-items: center; gap: 12px; background: linear-gradient(135deg, var(--rose) 0%, var(--rose-dark) 100%); color: #fff; font-size: 1rem; font-weight: 800; padding: 18px 36px; border-radius: 12px; text-decoration: none; transition: var(--transition); border: none; cursor: pointer; box-shadow: 0 8px 30px rgba(200,118,138,0.4); text-transform: uppercase; letter-spacing: 0.5px; position: relative; overflow: hidden; }
         .btn-primary::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent); transition: left 0.5s; }
         .btn-primary:hover::before { left: 100%; }
         .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(200,118,138,0.5); }
-        .btn-primary-lg { font-size: 1.15rem; padding: 22px 48px; width: 100%; justify-content: center; }
+        .btn-primary-lg { font-size: 1.1rem; padding: 20px 44px; width: 100%; justify-content: center; }
 
-        /* PROOF BAR */
+        /* PROOF */
         .proof-bar { background: rgba(255,255,255,0.03); border-top: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.06); padding: 20px 0; }
         .proof-grid { display: flex; justify-content: center; gap: 40px; align-items: center; flex-wrap: wrap; }
         .proof-item { text-align: center; }
@@ -80,12 +68,12 @@
         .proof-item .label { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
         .proof-divider { width: 1px; height: 40px; background: rgba(255,255,255,0.1); }
 
-        /* PAIN SECTION */
+        /* PAIN */
         .pain-section { background: #150609; border-top: 1px solid rgba(255,255,255,0.04); }
         .pain-intro { font-size: 1.4rem; font-weight: 700; color: #fff; font-family: 'Playfair Display', serif; margin-bottom: 8px; }
         .pain-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 36px; }
         .pain-item { display: flex; align-items: flex-start; gap: 14px; background: rgba(255,80,80,0.06); border: 1px solid rgba(255,80,80,0.15); border-radius: 12px; padding: 18px; }
-        .pain-icon { width: 36px; height: 36px; background: rgba(255,80,80,0.12); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #ff6b6b; font-size: 0.85rem; flex-shrink: 0; }
+        .pain-icon { width: 36px; height: 36px; background: rgba(255,80,80,0.12); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #ff6b6b; font-size: 0.85rem; flex-shrink: 0; margin-top: 1px; }
         .pain-item p { font-size: 0.88rem; color: rgba(255,255,255,0.75); line-height: 1.5; }
         .pain-item strong { color: #fff; }
 
@@ -93,27 +81,30 @@
         .showcase-section { background: #0F0508; }
         .showcase-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 60px; align-items: center; margin-top: 50px; }
         .ebook-cover { position: relative; }
-        .ebook-cover img { width: 100%; max-width: 320px; border-radius: 12px; box-shadow: 0 30px 80px rgba(200,118,138,0.3), 0 10px 30px rgba(0,0,0,0.6); display: block; margin: 0 auto; }
+        .ebook-cover img { width: 100%; max-width: 300px; border-radius: 12px; box-shadow: 0 30px 80px rgba(200,118,138,0.3), 0 10px 30px rgba(0,0,0,0.6); display: block; margin: 0 auto; }
         .ebook-badge { position: absolute; top: -12px; right: -12px; background: var(--rose); color: #fff; font-size: 0.6rem; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; padding: 8px 14px; border-radius: 100px; box-shadow: 0 4px 15px rgba(200,118,138,0.4); }
         .benefits-list { list-style: none; }
-        .benefits-list li { display: flex; align-items: flex-start; gap: 14px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.92rem; color: rgba(255,255,255,0.85); }
+        .benefits-list li { display: flex; align-items: flex-start; gap: 14px; padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.92rem; color: rgba(255,255,255,0.85); }
         .benefits-list li:last-child { border-bottom: none; }
-        .benefits-list li i { color: var(--accent-green); width: 18px; flex-shrink: 0; margin-top: 3px; }
+        .benefits-list li i { color: var(--green); width: 18px; flex-shrink: 0; margin-top: 3px; }
 
-        /* CHAPTERS */
+        /* CHAPTERS — REAL FROM EBOOK */
         .chapters-section { background: #150609; }
-        .chapters-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 40px; }
-        .chapter-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 14px; padding: 20px; display: flex; gap: 16px; align-items: flex-start; transition: var(--transition); }
+        .chapters-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-top: 40px; }
+        .chapter-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 14px; padding: 28px 22px; transition: var(--transition); }
         .chapter-card:hover { border-color: rgba(200,118,138,0.3); background: rgba(200,118,138,0.05); }
-        .chapter-num { width: 42px; height: 42px; background: linear-gradient(135deg, var(--rose), var(--rose-dark)); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 900; color: #fff; flex-shrink: 0; }
-        .chapter-card h4 { font-size: 0.92rem; font-weight: 700; color: #fff; margin-bottom: 5px; }
-        .chapter-card p { font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; }
+        .chapter-emoji { font-size: 2rem; margin-bottom: 16px; display: block; }
+        .chapter-num { font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: var(--rose-light); margin-bottom: 8px; display: block; }
+        .chapter-card h4 { font-size: 0.95rem; font-weight: 700; color: #fff; margin-bottom: 10px; }
+        .chapter-card ul { list-style: none; }
+        .chapter-card ul li { font-size: 0.8rem; color: var(--text-muted); padding: 4px 0; display: flex; align-items: flex-start; gap: 8px; }
+        .chapter-card ul li::before { content: '·'; color: var(--rose-light); font-weight: 900; flex-shrink: 0; }
 
         /* TESTIMONIALS */
         .testimonials-section { background: #0F0508; }
         .testimonials-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; margin-top: 44px; }
         .testimonial-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: var(--radius); padding: 26px; }
-        .testimonial-stars { color: #f59e0b; font-size: 0.75rem; margin-bottom: 12px; letter-spacing: 2px; }
+        .testimonial-stars { color: var(--amber); font-size: 0.75rem; margin-bottom: 12px; letter-spacing: 2px; }
         .testimonial-card blockquote { font-size: 0.88rem; color: rgba(255,255,255,0.8); line-height: 1.6; font-style: italic; margin-bottom: 18px; }
         .testimonial-author { display: flex; align-items: center; gap: 10px; }
         .author-avatar { width: 40px; height: 40px; background: linear-gradient(135deg, var(--rose-dark), #150609); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1rem; color: var(--rose-light); flex-shrink: 0; }
@@ -131,32 +122,41 @@
 
         /* PRICING */
         .pricing-section { background: #0F0508; }
-        .price-card { background: linear-gradient(135deg, #1a0c10 0%, #200d13 100%); border: 1px solid rgba(200,118,138,0.25); border-radius: 24px; padding: 48px; max-width: 500px; margin: 48px auto 0; text-align: center; position: relative; box-shadow: 0 0 60px rgba(200,118,138,0.08); }
+        .price-card { background: linear-gradient(135deg, #1a0c10 0%, #200d13 100%); border: 1px solid rgba(200,118,138,0.25); border-radius: 24px; padding: 48px 40px; max-width: 520px; margin: 48px auto 0; text-align: center; position: relative; box-shadow: 0 0 60px rgba(200,118,138,0.08); }
         .price-card::before { content: ''; position: absolute; top: -1px; left: 20%; right: 20%; height: 3px; background: linear-gradient(90deg, transparent, var(--rose), transparent); border-radius: 100%; }
         .best-seller-badge { position: absolute; top: -16px; left: 50%; transform: translateX(-50%); background: var(--rose); color: #fff; font-size: 0.62rem; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; padding: 6px 20px; border-radius: 100px; white-space: nowrap; }
         .price-product-name { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: var(--rose-light); margin-bottom: 8px; }
         .price-title { font-family: 'Playfair Display', serif; font-size: 1.7rem; font-weight: 700; color: #fff; margin-bottom: 28px; }
         .price-items { list-style: none; text-align: left; margin-bottom: 30px; }
-        .price-items li { display: flex; align-items: center; gap: 10px; padding: 9px 0; font-size: 0.87rem; color: rgba(255,255,255,0.8); border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .price-items li i { color: var(--accent-green); width: 16px; }
+        .price-items li { display: flex; align-items: flex-start; gap: 10px; padding: 9px 0; font-size: 0.87rem; color: rgba(255,255,255,0.8); border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .price-items li i { color: var(--green); width: 16px; flex-shrink: 0; margin-top: 2px; }
         .price-original { font-size: 0.95rem; color: var(--text-muted); text-decoration: line-through; margin-bottom: 4px; }
         .price-current { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 900; color: var(--rose-light); margin-bottom: 8px; }
         .price-current small { font-size: 1.2rem; font-family: 'Inter', sans-serif; }
         .price-installments { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 28px; }
         .price-secure { display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 0.72rem; color: var(--text-muted); margin-top: 16px; }
 
+        /* TRUST BADGES */
+        .trust-badges { display: flex; justify-content: center; gap: 20px; margin-top: 24px; flex-wrap: wrap; }
+        .trust-badge { display: flex; align-items: center; gap: 6px; font-size: 0.7rem; color: var(--text-muted); background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 8px 12px; }
+        .trust-badge i { color: var(--green); }
+
         /* CHECKOUT MODAL */
         #checkoutOverlay { position: fixed; inset: 0; background: rgba(15,5,8,0.97); backdrop-filter: blur(20px); display: flex; align-items: flex-start; justify-content: center; z-index: 10000; opacity: 0; pointer-events: none; transition: var(--transition); overflow-y: auto; padding: 20px 0; }
         #checkoutOverlay.active { opacity: 1; pointer-events: auto; }
-        .checkout-card { background: #1a0c10; width: 100%; max-width: 420px; margin: auto; border-radius: 20px; padding: 36px 30px; border: 1px solid rgba(200,118,138,0.25); box-shadow: 0 40px 80px rgba(0,0,0,0.6); position: relative; }
+        .checkout-card { background: var(--dark-card); width: 100%; max-width: 440px; margin: auto; border-radius: 20px; padding: 36px 30px; border: 1px solid rgba(200,118,138,0.25); box-shadow: 0 40px 80px rgba(0,0,0,0.6); position: relative; }
         .checkout-close { position: absolute; top: 14px; right: 14px; background: rgba(255,255,255,0.08); border: none; color: #fff; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; }
-        .checkout-header { text-align: center; margin-bottom: 24px; }
+        .checkout-header { text-align: center; margin-bottom: 20px; }
         .checkout-header h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--rose-light); margin-bottom: 4px; }
         .checkout-header p { font-size: 0.8rem; color: var(--text-muted); }
-        .checkout-product-row { display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.04); border-radius: 10px; padding: 12px; margin-bottom: 20px; }
+        .checkout-product-row { display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.04); border-radius: 10px; padding: 12px; margin-bottom: 16px; }
         .checkout-product-row img { width: 48px; height: 60px; object-fit: cover; border-radius: 6px; }
         .checkout-product-row .product-name { font-size: 0.85rem; font-weight: 700; color: #fff; }
         .checkout-product-row .product-price { font-size: 0.8rem; color: var(--rose-light); font-weight: 700; margin-top: 2px; }
+        /* Checkout trust row */
+        .checkout-trust { display: flex; justify-content: center; gap: 12px; margin-bottom: 18px; flex-wrap: wrap; }
+        .checkout-trust span { display: flex; align-items: center; gap: 4px; font-size: 0.68rem; color: var(--text-muted); }
+        .checkout-trust span i { color: var(--green); font-size: 0.7rem; }
         .method-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 18px; }
         .method-tab { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 10px; cursor: pointer; text-align: center; font-size: 0.8rem; font-weight: 700; color: var(--text-muted); transition: var(--transition); }
         .method-tab.active { background: rgba(200,118,138,0.15); border-color: var(--rose); color: var(--rose-light); }
@@ -169,11 +169,13 @@
         .btn-pay:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(34,197,94,0.4); }
         .btn-pay:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
         .secure-info { display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 0.68rem; color: var(--text-muted); margin-top: 12px; }
+        .checkout-logos { display: flex; justify-content: center; gap: 10px; margin-top: 12px; filter: brightness(0.5); }
+        .checkout-logos span { font-size: 0.65rem; color: var(--text-muted); font-weight: 800; background: rgba(255,255,255,0.1); padding: 4px 10px; border-radius: 4px; }
 
         /* PIX RESULT */
         #pixResultOverlay { position: fixed; inset: 0; background: rgba(15,5,8,0.98); backdrop-filter: blur(20px); display: flex; align-items: center; justify-content: center; z-index: 10000; opacity: 0; pointer-events: none; transition: var(--transition); }
         #pixResultOverlay.active { opacity: 1; pointer-events: auto; }
-        .pix-result-card { background: #1a0c10; width: 100%; max-width: 380px; margin: 20px; border-radius: 24px; padding: 36px 28px; border: 1px solid rgba(200,118,138,0.3); text-align: center; box-shadow: 0 40px 80px rgba(0,0,0,0.6); position: relative; transform: translateY(20px); transition: var(--transition); }
+        .pix-result-card { background: var(--dark-card); width: 100%; max-width: 380px; margin: 20px; border-radius: 24px; padding: 36px 28px; border: 1px solid rgba(200,118,138,0.3); text-align: center; box-shadow: 0 40px 80px rgba(0,0,0,0.6); position: relative; transform: translateY(20px); transition: var(--transition); }
         #pixResultOverlay.active .pix-result-card { transform: translateY(0); }
         .pix-result-title { font-family: 'Playfair Display', serif; color: var(--rose-light); font-size: 1.5rem; margin-bottom: 6px; }
         .pix-result-desc { font-size: 0.85rem; color: rgba(255,255,255,0.6); line-height: 1.5; margin-bottom: 20px; }
@@ -184,15 +186,13 @@
         .pix-urgency-box p { font-size: 0.78rem; color: rgba(255,255,255,0.65); }
         .btn-copy { width: 100%; background: linear-gradient(135deg, var(--rose), var(--rose-dark)); color: #fff; border: none; padding: 15px; border-radius: 12px; font-weight: 800; font-size: 0.88rem; cursor: pointer; transition: var(--transition); text-transform: uppercase; letter-spacing: 0.5px; display: flex; align-items: center; justify-content: center; gap: 8px; }
         .btn-copy:hover { transform: scale(1.02); }
-        .btn-copy.copied { background: var(--accent-green); }
-
-        /* SECTION TAGS */
-        .section-tag { display: inline-block; font-size: 0.62rem; font-weight: 800; text-transform: uppercase; letter-spacing: 3px; color: var(--rose-light); background: rgba(200,118,138,0.1); border: 1px solid rgba(200,118,138,0.25); padding: 6px 16px; border-radius: 100px; margin-bottom: 20px; }
+        .btn-copy.copied { background: var(--green); }
 
         @media (max-width: 768px) {
             .pain-list, .chapters-grid, .showcase-grid, .testimonials-grid { grid-template-columns: 1fr; }
             .showcase-grid { gap: 36px; }
             .guarantee-card { flex-direction: column; text-align: center; }
+            .price-card { padding: 36px 20px; }
         }
     </style>
 </head>
@@ -200,7 +200,7 @@
 
 <!-- ANNOUNCEMENT BAR -->
 <div class="announcement-bar">
-    🍼 OFERTA POR TEMPO LIMITADO — GUIA COMPLETO POR APENAS <strong>R$ 49,90</strong>
+    🍼 ACESSO IMEDIATO — GUIA COMPLETO POR APENAS <strong>R$ 49,90</strong>
 </div>
 
 <!-- HERO -->
@@ -219,7 +219,7 @@
                 <span class="line-red">mas Nunca Entregou.</span>
             </h1>
             <p class="hero-sub">
-                Cada erro nos primeiros dias pode custar caro. <strong>Aprenda o que os pediatras sabem e as mães não são ensinadas</strong> — sobre amamentação, choro, sono, cólica, higiene e os sinais de alerta que toda mãe precisa reconhecer agora.
+                Amamentar corretamente, dar banho com segurança, garantir um sono seguro e — mais importante — <strong>saber quando o choro do seu bebê é sinal de alerta.</strong> Tudo isso, explicado de forma prática e direta para as primeiras semanas.
             </p>
             <button class="btn-primary" onclick="openCheckout()">
                 <i class="fa-solid fa-heart"></i> Quero Cuidar do Meu Bebê com Segurança
@@ -238,7 +238,7 @@
         <div class="proof-grid">
             <div class="proof-item"><span class="num">+8.400</span><span class="label">Mães Atendidas</span></div>
             <div class="proof-divider"></div>
-            <div class="proof-item"><span class="num">98%</span><span class="label">Avaliações 5 Estrelas</span></div>
+            <div class="proof-item"><span class="num">98%</span><span class="label">Avaliações 5★</span></div>
             <div class="proof-divider"></div>
             <div class="proof-item"><span class="num">7 dias</span><span class="label">Garantia Total</span></div>
             <div class="proof-divider"></div>
@@ -247,19 +247,19 @@
     </div>
 </section>
 
-<!-- PAIN SECTION -->
+<!-- PAIN -->
 <section class="pain-section section">
     <div class="container">
         <div class="section-tag">A Realidade que Ninguém Conta</div>
-        <p class="pain-intro">Os primeiros dias são os mais perigosos.</p>
-        <p style="color:rgba(255,255,255,0.6); font-size:0.95rem; max-width:600px;">Erros simples — que nenhuma mãe faz por maldade — podem se tornar emergências. Você está pronta para reconhecer os sinais?</p>
+        <p class="pain-intro">Os primeiros dias são os mais desafiadores.</p>
+        <p style="color:rgba(255,255,255,0.6); font-size:0.95rem; max-width:600px;">Sem informação correta, momentos que parecem simples viran fontes de ansiedade e erro. Você já se perguntou:</p>
         <ul class="pain-list">
-            <li class="pain-item"><div class="pain-icon"><i class="fa-solid fa-triangle-exclamation"></i></div><p><strong>Icterícia ignorada.</strong> A pele amarelada parece "normal" mas pode ser sinal de algo grave. Saber identificar o nível certo salva vidas.</p></li>
-            <li class="pain-item"><div class="pain-icon"><i class="fa-solid fa-triangle-exclamation"></i></div><p><strong>Amamentação incorreta.</strong> Pega errada gera dor, fissura, mastite — e bebê que chora sem parar por não estar se alimentando direito.</p></li>
-            <li class="pain-item"><div class="pain-icon"><i class="fa-solid fa-triangle-exclamation"></i></div><p><strong>Choro e cólica sem resposta.</strong> Sem saber o que o choro do bebê quer dizer, as noites viram um pesadelo de ansiedade e desespero.</p></li>
-            <li class="pain-item"><div class="pain-icon"><i class="fa-solid fa-triangle-exclamation"></i></div><p><strong>Higiene do coto umbilical.</strong> Feita errada causa infecção grave. A maioria das mães não sabe o protocolo correto.</p></li>
-            <li class="pain-item"><div class="pain-icon"><i class="fa-solid fa-triangle-exclamation"></i></div><p><strong>Sono inseguro.</strong> Posição errada ao dormir é uma das principais causas da morte súbita em bebês. Ninguém ensina isso de forma clara.</p></li>
-            <li class="pain-item"><div class="pain-icon"><i class="fa-solid fa-triangle-exclamation"></i></div><p><strong>Febre no recém-nascido.</strong> Diferente do adulto, é sempre uma emergência. Saber triar é essencial para não atrasar o atendimento.</p></li>
+            <li class="pain-item"><div class="pain-icon"><i class="fa-solid fa-triangle-exclamation"></i></div><p><strong>O bebê está sugando direito?</strong> Uma pega incorreta gera dor, fissura e um bebê que chora sem parar por não se alimentar corretamente.</p></li>
+            <li class="pain-item"><div class="pain-icon"><i class="fa-solid fa-triangle-exclamation"></i></div><p><strong>A água do banho está na temperatura certa?</strong> Muito quente queima, muito fria causa desconforto. Saber a faixa exata (36,9°C a 37,5°C) faz toda a diferença.</p></li>
+            <li class="pain-item"><div class="pain-icon"><i class="fa-solid fa-triangle-exclamation"></i></div><p><strong>O coto umbilical está sendo higienizado corretamente?</strong> A forma errada causa infecção. Há um protocolo simples que a maioria das mães não conhece.</p></li>
+            <li class="pain-item"><div class="pain-icon"><i class="fa-solid fa-triangle-exclamation"></i></div><p><strong>Meu bebê está dormindo em posição segura?</strong> A posição errada é uma das principais causas de morte súbita em bebês.</p></li>
+            <li class="pain-item"><div class="pain-icon"><i class="fa-solid fa-triangle-exclamation"></i></div><p><strong>Este choro é normal ou é sinal de algo grave?</strong> Saber distinguir as situações que pedem atenção médica imediata é essencial.</p></li>
+            <li class="pain-item"><div class="pain-icon"><i class="fa-solid fa-triangle-exclamation"></i></div><p><strong>Febre, icterícia, respiração rápida...</strong> Quais desses sinais são urgência e quais podem esperar o pediatra?</p></li>
         </ul>
     </div>
 </section>
@@ -278,38 +278,68 @@
             </div>
             <div>
                 <p style="color:rgba(255,255,255,0.7); font-size:0.95rem; line-height:1.7; margin-bottom:24px;">
-                    Um guia direto ao ponto, escrito na linguagem que toda mãe entende. Sem termos médicos complicados. Sem enrolação. Só o que você <strong style="color:#fff;">precisa saber e aplicar agora</strong>.
+                    Um guia direto ao ponto, escrito na linguagem que toda mãe entende. Sem termos médicos complicados. Apenas <strong style="color:#fff;">o que você precisa saber para agir com segurança agora</strong>.
                 </p>
                 <ul class="benefits-list">
-                    <li><i class="fa-solid fa-check"></i> Protocolo passo a passo para os 7 primeiros dias</li>
-                    <li><i class="fa-solid fa-check"></i> Como identificar os 12 sinais críticos de alerta</li>
-                    <li><i class="fa-solid fa-check"></i> Técnica de amamentação validada por pediatras</li>
-                    <li><i class="fa-solid fa-check"></i> O que fazer quando o bebê não para de chorar</li>
-                    <li><i class="fa-solid fa-check"></i> Sono seguro: posição, ambiente e temperatura ideal</li>
-                    <li><i class="fa-solid fa-check"></i> Higiene correta do coto umbilical e da pele</li>
-                    <li><i class="fa-solid fa-check"></i> Quando ir à UPA e quando esperar em casa</li>
-                    <li><i class="fa-solid fa-check"></i> Checklist diário para os primeiros 30 dias</li>
+                    <li><i class="fa-solid fa-check"></i> Como garantir uma pega correta e amamentar sem dor</li>
+                    <li><i class="fa-solid fa-check"></i> Frequência de mamadas nos primeiros dias (8 a 12x/dia é normal)</li>
+                    <li><i class="fa-solid fa-check"></i> Temperatura ideal do banho e como testar com segurança</li>
+                    <li><i class="fa-solid fa-check"></i> Protocolo correto de higiene do coto umbilical</li>
+                    <li><i class="fa-solid fa-check"></i> Posição segura para dormir e ambiente ideal de sono</li>
+                    <li><i class="fa-solid fa-check"></i> Os sinais de alerta que exigem ida imediata à UPA</li>
+                    <li><i class="fa-solid fa-check"></i> O que fazer em cada situação de emergência neonatal</li>
                 </ul>
             </div>
         </div>
     </div>
 </section>
 
-<!-- CHAPTERS -->
+<!-- CHAPTERS — REAL -->
 <section class="chapters-section section">
     <div class="container">
         <div class="section-tag center">O que você vai aprender</div>
-        <h2 class="center" style="font-family:'Playfair Display',serif; font-size:clamp(1.6rem,3.5vw,2.4rem); color:#fff; margin-bottom:8px;">Conteúdo do Guia</h2>
-        <p class="center" style="color:var(--text-muted); font-size:0.9rem; max-width:550px; margin:0 auto;">12 capítulos que cobrem tudo de forma clara, prática e baseada em evidências.</p>
+        <h2 class="center" style="font-family:'Playfair Display',serif; font-size:clamp(1.6rem,3.5vw,2.4rem); color:#fff; margin-bottom:8px;">Os 3 Capítulos do Guia</h2>
+        <p class="center" style="color:var(--text-muted); font-size:0.9rem; margin-top:8px; max-width:550px; margin-left:auto; margin-right:auto;">Conteúdo prático, baseado em evidências e escrito para ser aplicado imediatamente.</p>
         <div class="chapters-grid">
-            <div class="chapter-card"><div class="chapter-num">01</div><div><h4>Chegando em Casa</h4><p>O ambiente ideal, temperatura, iluminação e o que preparar antes de sair da maternidade.</p></div></div>
-            <div class="chapter-card"><div class="chapter-num">02</div><div><h4>Amamentar sem Dor</h4><p>Pega correta, posições, frequência, sinais de fome e como saber se o bebê está mamando o suficiente.</p></div></div>
-            <div class="chapter-card"><div class="chapter-num">03</div><div><h4>Entendendo o Choro</h4><p>Os 6 tipos de choro e o que cada um significa. Saiba responder antes de entrar em desespero.</p></div></div>
-            <div class="chapter-card"><div class="chapter-num">04</div><div><h4>Sono Seguro</h4><p>Posição, colchão, roupa, temperatura — tudo que garante que o bebê dorme e você descansa.</p></div></div>
-            <div class="chapter-card"><div class="chapter-num">05</div><div><h4>Higiene e Cuidados</h4><p>Coto umbilical, banho, troca de fralda, cuidados com a pele e unhas do recém-nascido.</p></div></div>
-            <div class="chapter-card"><div class="chapter-num">06</div><div><h4>Sinais de Alerta</h4><p>12 situações em que você deve ir imediatamente à UPA. Reconhecer a tempo salva vidas.</p></div></div>
-            <div class="chapter-card"><div class="chapter-num">07</div><div><h4>Icterícia Neonatal</h4><p>Como identificar, o que fazer em casa e quando é urgente. Tudo que a maternidade não explicou.</p></div></div>
-            <div class="chapter-card"><div class="chapter-num">08</div><div><h4>Cólica e Gases</h4><p>Técnicas comprovadas para aliviar a cólica. O método que reduz o choro em até 80%.</p></div></div>
+            <div class="chapter-card">
+                <span class="chapter-emoji">🍼</span>
+                <span class="chapter-num">Capítulo 1</span>
+                <h4>Os Primeiros Cuidados Essenciais</h4>
+                <ul>
+                    <li>Amamentação em livre demanda</li>
+                    <li>Técnica de pega correta</li>
+                    <li>Sinais de pega inadequada</li>
+                    <li>Temperatura ideal do banho</li>
+                    <li>Quando fazer o primeiro banho</li>
+                    <li>Higiene do coto umbilical</li>
+                </ul>
+            </div>
+            <div class="chapter-card">
+                <span class="chapter-emoji">😴</span>
+                <span class="chapter-num">Capítulo 2</span>
+                <h4>Sono Seguro e Ambiente Adequado</h4>
+                <ul>
+                    <li>Posição certa para dormir</li>
+                    <li>Fatores de risco para morte súbita</li>
+                    <li>Temperatura e ambiente ideal</li>
+                    <li>Rotina de sono nos primeiros dias</li>
+                    <li>Colchão e roupas seguras</li>
+                    <li>Quando e como usar berço</li>
+                </ul>
+            </div>
+            <div class="chapter-card">
+                <span class="chapter-emoji">🚨</span>
+                <span class="chapter-num">Capítulo 3</span>
+                <h4>Sinais de Alerta e Quando Pedir Ajuda</h4>
+                <ul>
+                    <li>Febre em recém-nascido: o que fazer</li>
+                    <li>Icterícia neonatal: como identificar</li>
+                    <li>Respiração: quando é preocupante</li>
+                    <li>Recusa alimentar: o que significa</li>
+                    <li>Vômito: normal vs. emergência</li>
+                    <li>Quando ir direto à UPA</li>
+                </ul>
+            </div>
         </div>
     </div>
 </section>
@@ -322,17 +352,17 @@
         <div class="testimonials-grid">
             <div class="testimonial-card">
                 <div class="testimonial-stars">★★★★★</div>
-                <blockquote>"Minha filha estava com a pele amarelada e eu não sabia a gravidade. O guia me ensinou os sinais. Corri para a UPA e ela ficou internada por 2 dias. Se eu não soubesse, poderia ter sido muito pior."</blockquote>
+                <blockquote>"Minha filha estava com a pele amarelada e o guia me ensinou a identificar o nível de icterícia. Corri para a UPA e ela foi internada por 2 dias. Se eu não soubesse, poderia ter sido muito pior."</blockquote>
                 <div class="testimonial-author"><div class="author-avatar">A</div><div class="author-info"><strong>Ana Beatriz, 28 anos</strong><span>São Paulo, SP</span></div></div>
             </div>
             <div class="testimonial-card">
                 <div class="testimonial-stars">★★★★★</div>
-                <blockquote>"Meu bebê chorava sem parar e eu achava que era cólica. Aprendi que era a pega errada. Com as técnicas do guia, em 2 dias ele parou de chorar tanto e eu parei de desistir da amamentação."</blockquote>
+                <blockquote>"O capítulo de amamentação me salvou. Aprendi sobre a pega correta e em 2 dias o choro do meu bebê diminuiu 80%. Ele estava com fome porque a pega estava errada e eu não sabia."</blockquote>
                 <div class="testimonial-author"><div class="author-avatar">C</div><div class="author-info"><strong>Carla Mendes, 31 anos</strong><span>Belo Horizonte, MG</span></div></div>
             </div>
             <div class="testimonial-card">
                 <div class="testimonial-stars">★★★★★</div>
-                <blockquote>"Comprei às 2h da manhã, desesperada, bebê no meu colo chorando. Em 20 minutos achei o capítulo de cólica e apliquei a técnica. Ele dormiu. Eu chorei de alívio. Vale cada centavo."</blockquote>
+                <blockquote>"Comprei às 2h da manhã com meu bebê no colo chorando. Em 20 minutos aprendi sobre posição de sono seguro e ambiente ideal. Mudei imediatamente e ele dormiu. Vale cada centavo."</blockquote>
                 <div class="testimonial-author"><div class="author-avatar">F</div><div class="author-info"><strong>Fernanda Lima, 25 anos</strong><span>Curitiba, PR</span></div></div>
             </div>
         </div>
@@ -345,8 +375,8 @@
         <div class="guarantee-card">
             <div class="guarantee-badge"><div class="days">7</div><div class="label">Dias de<br>Garantia</div></div>
             <div class="guarantee-text">
-                <h3>Satisfação Garantida ou seu Dinheiro de Volta</h3>
-                <p>Se em 7 dias você não sentir que o guia valeu muito mais do que pagou — basta nos enviar uma mensagem e devolvemos <strong style="color:#fff;">100% do seu dinheiro</strong>, sem perguntas, sem burocracia. O risco é todo nosso.</p>
+                <h3>Satisfação Garantida ou Dinheiro de Volta</h3>
+                <p>Se em 7 dias você não sentir que o guia valeu muito mais do que pagou, devolvemos <strong style="color:#fff;">100% do seu dinheiro</strong> sem perguntas. Compre agora sem nenhum risco — o risco é todo nosso.</p>
             </div>
         </div>
     </div>
@@ -359,15 +389,15 @@
         <h2 style="font-family:'Playfair Display',serif; font-size:clamp(1.8rem,4vw,2.6rem); color:#fff;">Comece a Cuidar com Confiança Hoje</h2>
         <div class="price-card">
             <span class="best-seller-badge">Mais Comprado</span>
-            <p class="price-product-name">E-book Digital</p>
+            <p class="price-product-name">E-book Digital — Acesso Imediato</p>
             <h3 class="price-title">Os Primeiros Dias</h3>
             <ul class="price-items">
-                <li><i class="fa-solid fa-check"></i> 12 capítulos completos</li>
-                <li><i class="fa-solid fa-check"></i> Checklist dos primeiros 30 dias</li>
-                <li><i class="fa-solid fa-check"></i> 12 sinais de alerta detalhados</li>
-                <li><i class="fa-solid fa-check"></i> Técnicas de amamentação</li>
-                <li><i class="fa-solid fa-check"></i> Guia de sono seguro</li>
-                <li><i class="fa-solid fa-check"></i> Acesso vitalício e imediato</li>
+                <li><i class="fa-solid fa-check"></i> Cap. 1: Amamentação, Banho e Higiene Completos</li>
+                <li><i class="fa-solid fa-check"></i> Cap. 2: Sono Seguro e Ambiente Adequado</li>
+                <li><i class="fa-solid fa-check"></i> Cap. 3: Sinais de Alerta e Emergências</li>
+                <li><i class="fa-solid fa-check"></i> Dicas práticas com explicações claras</li>
+                <li><i class="fa-solid fa-check"></i> Acesso vitalício — leia quando precisar</li>
+                <li><i class="fa-solid fa-check"></i> Garantia de 7 dias com devolução total</li>
             </ul>
             <p class="price-original">De R$ 97,00</p>
             <p class="price-current"><small>R$ </small>49<small>,90</small></p>
@@ -375,7 +405,12 @@
             <button class="btn-primary btn-primary-lg" onclick="openCheckout()">
                 <i class="fa-solid fa-heart"></i> Garantir Meu Guia Agora
             </button>
-            <p class="price-secure"><i class="fa-solid fa-lock"></i> Pagamento seguro — Mercado Pago</p>
+            <p class="price-secure"><i class="fa-solid fa-lock"></i> Pagamento 100% seguro — Mercado Pago</p>
+            <div class="trust-badges">
+                <div class="trust-badge"><i class="fa-solid fa-shield-halved"></i> Compra Protegida</div>
+                <div class="trust-badge"><i class="fa-solid fa-bolt"></i> Acesso Imediato</div>
+                <div class="trust-badge"><i class="fa-solid fa-rotate-left"></i> 7 dias de garantia</div>
+            </div>
         </div>
     </div>
 </section>
@@ -383,7 +418,7 @@
 <!-- FOOTER -->
 <footer style="background:#0a0305; padding:30px 20px; text-align:center; border-top:1px solid rgba(255,255,255,0.05);">
     <p style="font-size:0.72rem; color:var(--text-muted);">© 2025 Os Primeiros Dias. Todos os direitos reservados.</p>
-    <p style="font-size:0.68rem; color:rgba(255,255,255,0.3); margin-top:8px; max-width:500px; margin-left:auto; margin-right:auto;">Este guia é informativo e não substitui acompanhamento médico. Em caso de dúvidas, consulte sempre um pediatra.</p>
+    <p style="font-size:0.68rem; color:rgba(255,255,255,0.3); margin-top:8px; max-width:500px; margin-left:auto; margin-right:auto;">Este guia é informativo e não substitui acompanhamento médico. Em caso de dúvidas, sempre consulte um pediatra.</p>
 </footer>
 
 <!-- CHECKOUT MODAL -->
@@ -396,22 +431,25 @@
         </div>
         <div class="checkout-product-row">
             <img src="capa_ebook.png" alt="Ebook">
-            <div><div class="product-name">Os Primeiros Dias</div><div class="product-price">R$ 49,90</div></div>
+            <div><div class="product-name">Os Primeiros Dias</div><div class="product-price">R$ 49,90 — Acesso Imediato</div></div>
+        </div>
+        <div class="checkout-trust">
+            <span><i class="fa-solid fa-lock"></i> Compra Segura</span>
+            <span><i class="fa-solid fa-shield-halved"></i> Dados Protegidos</span>
+            <span><i class="fa-solid fa-rotate-left"></i> Garantia 7 dias</span>
         </div>
         <div class="method-tabs">
             <div class="method-tab active" onclick="setMethod('pix')" id="tab-pix"><i class="fa-solid fa-qrcode"></i> PIX</div>
             <div class="method-tab" onclick="setMethod('card')" id="tab-card"><i class="fa-solid fa-credit-card"></i> CARTÃO</div>
         </div>
-        <!-- PIX FORM -->
         <div id="pix-form">
             <div class="form-group"><label>Nome Completo</label><input type="text" class="form-control" id="pix-name" placeholder="Seu nome"></div>
             <div class="form-group"><label>CPF</label><input type="text" class="form-control" id="pix-cpf" placeholder="000.000.000-00" maxlength="14"></div>
             <div class="form-group"><label>E-mail</label><input type="email" class="form-control" id="pix-email" placeholder="seu@email.com"></div>
-            <button class="btn-pay" id="btn-pay-pix" onclick="handlePixPayment()"><i class="fa-solid fa-qrcode"></i> Gerar PIX</button>
+            <button class="btn-pay" id="btn-pay-pix" onclick="handlePixPayment()"><i class="fa-solid fa-qrcode"></i> Gerar PIX — R$ 49,90</button>
         </div>
-        <!-- CARD FORM -->
         <div id="card-form" style="display:none">
-            <div class="form-group"><label>Nome no Cartão</label><input type="text" class="form-control" id="card-name" placeholder="Como no cartão"></div>
+            <div class="form-group"><label>Nome no Cartão</label><input type="text" class="form-control" id="card-name" placeholder="Como aparece no cartão"></div>
             <div class="form-group"><label>E-mail</label><input type="email" class="form-control" id="card-email" placeholder="seu@email.com"></div>
             <div class="form-group"><label>Número do Cartão</label><input type="text" class="form-control" id="card-number" placeholder="0000 0000 0000 0000" maxlength="19"></div>
             <div class="form-row">
@@ -422,6 +460,9 @@
             <button class="btn-pay" id="btn-pay-card" onclick="handleCardPayment()"><i class="fa-solid fa-lock"></i> Pagar R$ 49,90</button>
         </div>
         <p class="secure-info"><i class="fa-solid fa-lock"></i> Dados criptografados e protegidos pelo Mercado Pago</p>
+        <div class="checkout-logos">
+            <span>VISA</span><span>MASTER</span><span>PIX</span><span>ELO</span>
+        </div>
     </div>
 </div>
 
@@ -444,28 +485,21 @@
     const API_URL = window.location.hostname === 'localhost' ? 'http://localhost:3001' : '';
     let currentPixCode = '';
     let countdownTimer;
-    let currentMethod = 'pix';
 
     function openCheckout() { document.getElementById('checkoutOverlay').classList.add('active'); document.body.style.overflow = 'hidden'; }
     function closeCheckout() { document.getElementById('checkoutOverlay').classList.remove('active'); document.body.style.overflow = ''; }
-    
+
     function setMethod(m) {
-        currentMethod = m;
         document.getElementById('pix-form').style.display = m === 'pix' ? 'block' : 'none';
         document.getElementById('card-form').style.display = m === 'card' ? 'block' : 'none';
         document.getElementById('tab-pix').classList.toggle('active', m === 'pix');
         document.getElementById('tab-card').classList.toggle('active', m === 'card');
     }
 
-    // CPF Mask
     function maskCpf(el) { let v = el.value.replace(/\D/g,'').substring(0,11); v = v.replace(/(\d{3})(\d)/,'$1.$2').replace(/(\d{3})(\d)/,'$1.$2').replace(/(\d{3})(\d{1,2})$/,'$1-$2'); el.value = v; }
     document.querySelectorAll('#pix-cpf,#card-cpf').forEach(el => el.addEventListener('input', () => maskCpf(el)));
-    
-    // Card number mask
     const cardNumEl = document.getElementById('card-number');
     if(cardNumEl) cardNumEl.addEventListener('input', function(){ let v = this.value.replace(/\D/g,'').substring(0,16); this.value = v.replace(/(\d{4})/g,'$1 ').trim(); });
-    
-    // Card expiry mask
     const cardExpEl = document.getElementById('card-expiry');
     if(cardExpEl) cardExpEl.addEventListener('input', function(){ let v = this.value.replace(/\D/g,'').substring(0,4); if(v.length>=2) v = v.substring(0,2)+'/'+v.substring(2); this.value = v; });
 
@@ -477,7 +511,6 @@
         const btn = document.getElementById('btn-pay-pix');
         btn.disabled = true; btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Gerando PIX...';
         try {
-            // Capture lead
             await fetch(API_URL + '/api/abandon', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({name, email, phone:''}) }).catch(()=>{});
             const res = await fetch(API_URL + '/api/create-pix', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({name, email, cpf: cpf.replace(/\D/g,'')}) });
             const data = await res.json();
@@ -487,10 +520,10 @@
                 document.getElementById('pix-qr-img').src = 'data:image/png;base64,' + data.qr_code_base64;
                 document.getElementById('pixResultOverlay').classList.add('active');
                 startCountdown(15 * 60);
-                if(data.id) pollPayment(data.id, email);
+                if(data.id) pollPayment(data.id);
             } else { alert(data.error || 'Erro ao gerar PIX.'); }
         } catch(e) { alert('Erro de conexão. Tente novamente.'); }
-        btn.disabled = false; btn.innerHTML = '<i class="fa-solid fa-qrcode"></i> Gerar PIX';
+        btn.disabled = false; btn.innerHTML = '<i class="fa-solid fa-qrcode"></i> Gerar PIX — R$ 49,90';
     }
 
     async function handleCardPayment() {
@@ -523,7 +556,7 @@
         update(); countdownTimer = setInterval(update, 1000);
     }
 
-    function pollPayment(pixId, email) {
+    function pollPayment(pixId) {
         const interval = setInterval(async () => {
             try {
                 const res = await fetch(`${API_URL}/api/check-payment/${pixId}`);
@@ -534,7 +567,6 @@
         setTimeout(() => clearInterval(interval), 20 * 60 * 1000);
     }
 
-    // Close on background click
     document.getElementById('checkoutOverlay').addEventListener('click', function(e){ if(e.target === this) closeCheckout(); });
 </script>
 </body>
